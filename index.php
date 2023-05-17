@@ -2,6 +2,7 @@
 <?php include('./ServerConnect/server.php'); ?>
 <?php
 session_start();
+$_SESSION['path'] = $_SERVER['REQUEST_URI']; 
 
 if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must login first";
@@ -66,14 +67,14 @@ if (isset($_GET['logout'])) {
 
 
                     <?php if (isset($_SESSION['username'])) : ?>
-                    <p class="mt-3">Welcome <?php echo $_SESSION['username']; ?>&nbsp;</p>
+                    <p class="mt-3">Welcome <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
                     <?php if ($_SESSION['image'] === '') : ?>
                         <div class="profile-image-container">
-                            <a href="update_profile.php"><img src="./Login/pic/default-image.png" height="50px" border-radius="50%"></a>
+                            <a href="./Login/update_profile.php"><img src="./Login/pic/default-image.png" height="50px" border-radius="50%"></a>
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="./Login/update_profile.php"><img src="./Login/uploaded_img/<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
+                            <a href="./Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>

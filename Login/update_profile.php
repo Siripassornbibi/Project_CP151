@@ -8,19 +8,32 @@
         
         $user_id = $_SESSION['id'];
         mysqli_query($conn, "UPDATE `user` SET `username`='$update_name', `email`='$update_email' WHERE `id`='$user_id'");
-    
-        $update_image = $_FILES['update_image']['name'];
-        $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
-        $update_image_folder = './uploaded_img/'.$update_image;
 
-        if(!empty($update_image)){
-            move_uploaded_file($update_image_tmp_name, $update_image_folder);
-            mysqli_query($conn, "UPDATE `user` SET `image`='$update_image' WHERE `id`='$user_id'");
-            $_SESSION['image'] = $update_image;
+        if(!empty($_FILES["update_image"]["name"])){
+            $fileName = basename($_FILES["update_image"]["name"]);
+		    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+            $image = $_FILES['update_image']['tmp_name'];
+            $imgContent = addslashes(file_get_contents($image));    
+            mysqli_query($conn, "UPDATE `user` SET `image`='".$imgContent."' WHERE `id`='$user_id'");
         }
+
         $_SESSION['username'] = $update_name;
         $_SESSION['email'] = $update_email;
+
+        //update image session data
+        $sql = "SELECT image FROM user WHERE id = ".$_SESSION['id'];
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $_SESSION['image'] = base64_encode($row['image']);
+            }
+        }
+
     }
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +64,7 @@
                 </div>
             <?php else: ?>
                 <div class="profile-image-container">
-                    <img src="./uploaded_img/<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px">
+                    <img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px">
                 </div>
             <?php endif; ?>
             <div class="input-group">
@@ -65,8 +78,7 @@
                 <input type="file" name="update_image" class="box">
             </div>
             <input type="submit" value="update profile" name="update_profile" class="update-button">
-            <a href="../index.php" class="delete-button">cancel</a>
-
+            <a href="<?php echo $_SESSION['path']?>" class="delete-button">cancel</a>
         </form>
     </div>
 </body>

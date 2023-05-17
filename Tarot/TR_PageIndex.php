@@ -1,10 +1,9 @@
 <?php include('../ServerConnect/server.php'); ?>
 <?php 
 session_start(); 
-$_SESSION['path'] = $_SERVER['REQUEST_URI']; 
-$_SESSION['commentTable'] = 'commentTarot'; 
+    $_SESSION['path'] = $_SERVER['REQUEST_URI']; 
+    $_SESSION['commentTable'] = 'commentTarot'; 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +96,7 @@ $_SESSION['commentTable'] = 'commentTarot';
     <nav class="navbar navbar-expand-lg fixed-top navbarTop">
         <div class="container-fluid">
             <p class="pathTxt">
-                <a class="navbar-brand" href="../Login/index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
+                <a class="navbar-brand" href="../index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
                 <a class="navbar-brand" href="../Login/menu.php" style="font-size:15px">MENU &nbsp ></a>
                 <u><a class="navbar-brand" href="./FS_PageIndex.php" style="text-decoration: underline; font-size:15px;">TAROT CARD</a></u>
             </p>
@@ -107,10 +106,18 @@ $_SESSION['commentTable'] = 'commentTarot';
                 </a>
             </div>
             <div class="d-flex me-2">
-                <b>
-                    <p class="mt-3"> <?php echo $_SESSION['username']; ?></p>
-                </b>
-                <i class="fa fa-user" aria-hidden="true"></i></p>
+            <?php if (isset($_SESSION['username'])) : ?>
+                    <p class="mt-3">username: <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
+                    <?php if ($_SESSION['image'] === '') : ?>
+                        <div class="profile-image-container">
+                            <a href="../Login/update_profile.php"><img src="../Login/pic/default-image.png" height="50px" border-radius="50%"></a>
+                        </div>
+                    <?php else: ?>
+                        <div class="profile-image-container">
+                            <a href="../Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <p>&nbsp&nbsp&nbsp</p>
                 <p class="mt-2 me-2"><a href="../ServerConnect/logout.php" class="btn btn-outline-danger">Logout</a></p>
             </div>

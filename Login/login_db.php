@@ -24,7 +24,7 @@
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $row['email'];
-                $_SESSION['image'] = $row['image'];
+                $_SESSION['image'] = base64_encode($row['image']);
                 $_SESSION['success'] = "You are now logged in";
                 header('location: ../index.php');
             } else {

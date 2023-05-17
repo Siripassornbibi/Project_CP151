@@ -1,6 +1,8 @@
 <?php
 session_start();
 include('../ServerConnect/server.php');
+$_SESSION['path'] = $_SERVER['REQUEST_URI']; 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,19 +128,19 @@ include('../ServerConnect/server.php');
             </div>
             <div class="d-flex me-2">
                 <?php if (isset($_SESSION['username'])) : ?>
-                    <p class="mt-3">Welcome <?php echo $_SESSION['username']; ?>&nbsp;</p>
+                    <p class="mt-3">username: <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
                     <?php if ($_SESSION['image'] === '') : ?>
                         <div class="profile-image-container">
                             <a href="./update_profile.php"><img src="./pic/default-image.png" height="50px" border-radius="50%"></a>
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="./update_profile.php"><img src="uploaded_img/<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
+                            <a href="./update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
                 <p>&nbsp&nbsp&nbsp</p>
-                <p class="mt-2 me-2"><a href="index.php?logout='1'" class="btn btn-outline-danger">Logout</a></p>
+                <p class="mt-2 me-2"><a href="../index.php?logout='1'" class="btn btn-outline-danger">Logout</a></p>
             </div>
         </div>
     </nav>
