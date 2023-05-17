@@ -1,4 +1,7 @@
-<?php include('../ServerConnect/server.php'); ?>
+<?php 
+session_start();
+include('../ServerConnect/server.php'); 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,25 +19,27 @@
     </style>
 </head>
 <body>
+
     <form action="login_db.php" method="post">
-        <?php if(isset($_SESSION['error'])) : ?>
-            <div class="error">
-                <h3>
-                    <?php
-                        echo $_SESSION['error'];
-                        unset($_SESSION['error']); //ขึ้นแค่รอบเดียว ถ้าrefreshหน้าข้อความก็จะหายไป
-                    ?>
-                </h3>
-            </div>
-        <?php endif ?>
-        
         <div class="login">
             <h2>Sign in</h2>
+
+            <?php if(isset($_SESSION['error'])) : ?>
+                <div class="error">
+                    <h4 style="color: #a94442; border: 1px solid #a94442; background: #f2dede; border-radius: 5px; text-align: center; padding: 10px; margin-bottom: 10px;">
+                        <?php
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']); //ขึ้นแค่รอบเดียว ถ้าrefreshหน้าข้อความก็จะหายไป
+                        ?>
+                    </h4>
+                </div>
+            <?php endif ?>
+        
             <div class="input-group">
-                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="username" placeholder="Username" required>
             </div>
             <div class="input-group">
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Password" required>
             </div>
             <div class="input-group">
                 <input type="submit" name="login_user" value="Login" id="btn">

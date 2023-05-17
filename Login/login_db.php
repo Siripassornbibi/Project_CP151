@@ -23,13 +23,19 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['username'] = $username;
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['image'] = $row['image'];
                 $_SESSION['success'] = "You are now logged in";
-                header('location: index.php');
+                header('location: ../index.php');
             } else {
                 array_push($errors, "Wrong username or password");
                 $_SESSION['error'] = "Wrong username or password. Please try again";
                 header('location: login.php');
             }
+        }
+        else {
+            $_SESSION['errors'] = $errors;
+            header('location: login.php');
         }
     }
 ?>
