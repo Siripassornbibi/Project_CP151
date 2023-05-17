@@ -75,7 +75,7 @@ $_SESSION['commentTable'] = 'commentTarot';
             font-weight: bold;
         }
 
-        .BtnBarItem :hover {
+        .BtnBarItem:hover {
             background-color: rgb(0, 0, 0);
             color: white;
         }
@@ -133,10 +133,10 @@ $_SESSION['commentTable'] = 'commentTarot';
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="./compost/TR_BG3.gif" alt="FortuneStick1" class="d-block" style="width:100%">
+                <img src="./compost/TR_BG4.gif" alt="Tarot1" class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
-                <img src="../FortuneStick/pic/gifBG1_2.gif" alt="FortuneStick2" class="d-block" style="width:100%">
+                <img src="./compost/TR_BG3.gif" alt="Tarot2" class="d-block" style="width:100%">
             </div>
         </div>
 
@@ -226,6 +226,13 @@ $_SESSION['commentTable'] = 'commentTarot';
     <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
     <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
     <script src="../css/scrollTop/scroll.js"></script>
+
+    <!-- carousel เลื่อนเอง -->
+    <script>
+        // Initialize the carousel
+        var myCarousel = document.getElementById('demo');
+        var carousel = new bootstrap.Carousel(myCarousel);
+    </script>
 
      <!-- js -->
     <script type="text/javascript">

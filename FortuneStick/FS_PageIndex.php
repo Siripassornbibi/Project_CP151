@@ -75,7 +75,7 @@ $_SESSION['commentTable'] = 'comment';
             font-weight: bold;
         }
 
-        .BtnBarItem :hover {
+        .BtnBarItem:hover {
             background-color: rgb(0, 0, 0);
             color: white;
         }
@@ -248,6 +248,13 @@ $_SESSION['commentTable'] = 'comment';
     <!-- script heart -->
     <script src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js'></script>
     <script src="../css/heartEffect/scriptHeart.js"></script>
+
+    <!-- carousel เลื่อนเอง -->
+    <script>
+        // Initialize the carousel
+        var myCarousel = document.getElementById('demo');
+        var carousel = new bootstrap.Carousel(myCarousel);
+    </script>
 
      <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
     <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
