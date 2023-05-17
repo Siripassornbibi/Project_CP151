@@ -13,6 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <!--ปุ่มเลื่อนขึ้นไปข้างบน-->
+    <link rel="stylesheet" href="../css/scrollTop/scroll.css">
+
     <!--เชื่อมข้อมูล-->
     <script src="./TR_Data.js"></script>
     <script>
@@ -204,6 +207,10 @@
         </div>
     </div>
 
+    <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
+    <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
+    <script src="../css/scrollTop/scroll.js"></script>
+
     <script type="text/javascript">
 
         document.getElementById("NameCardS").innerHTML = NameCardShow;
@@ -220,7 +227,6 @@
         }
 
     </script>
-
     
    
 

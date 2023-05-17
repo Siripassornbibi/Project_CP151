@@ -25,6 +25,9 @@ $_SESSION['commentTable'] = 'comment';
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
     <link rel="stylesheet" href="../css/heartEffect/styleHeart.css">
 
+    <!--ปุ่มเลื่อนขึ้นไปข้างบน-->
+    <link rel="stylesheet" href="../css/scrollTop/scroll.css">
+
     <!--footer-->
     <link rel="stylesheet" href="../css/footer.css">
 
@@ -246,6 +249,9 @@ $_SESSION['commentTable'] = 'comment';
     <script src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js'></script>
     <script src="../css/heartEffect/scriptHeart.js"></script>
 
+     <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
+    <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
+    <script src="../css/scrollTop/scroll.js"></script>
 
 
 </body>

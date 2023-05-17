@@ -25,6 +25,9 @@ $_SESSION['commentTable'] = 'commentTarot';
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
     <link rel="stylesheet" href="../css/heartEffect/styleHeart.css">
 
+    <!--ปุ่มเลื่อนขึ้นไปข้างบน-->
+    <link rel="stylesheet" href="../css/scrollTop/scroll.css">
+
     <!--footer-->
     <link rel="stylesheet" href="../css/footer.css">
 
@@ -219,6 +222,10 @@ $_SESSION['commentTable'] = 'commentTarot';
             <p style="background-color: white; color:black; border-radius: 35px; width: 200px;">Version : 0.0.1</p>
         </center>
     </div>
+
+    <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
+    <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
+    <script src="../css/scrollTop/scroll.js"></script>
 
      <!-- js -->
     <script type="text/javascript">
