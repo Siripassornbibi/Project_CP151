@@ -1,0 +1,57 @@
+<?php
+    session_start();
+    include('../ServerConnect/server.php');
+    $errors = array();
+
+    if (isset($_POST['reg_user'])) {
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $pass_1 = mysqli_real_escape_string($conn, $_POST['pass_1']);
+        $pass_2 = mysqli_real_escape_string($conn, $_POST['pass_2']);
+
+        if(empty($username)) {
+            array_push($errors, "*Username is required");
+        }
+        if(empty($email)) {
+            array_push($errors, "*Email is required");
+        }
+        if(empty($pass_1)) {
+            array_push($errors, "*Password is required");
+        }
+        if(empty($pass_2)) {
+            array_push($errors, "*Please confirm password");
+        }
+        if($pass_1 != $pass_2) {
+            array_push($errors, "The two password do not match");
+        }
+
+        $user_check_query = "SELECT * FROM user WHERE username = '$username' OR email = '$email' ";
+        $query = mysqli_query($conn, $user_check_query);
+        $result = mysqli_fetch_assoc($query);
+
+        if ($result) {
+            if ($result['username'] === $username) { //มีชื่อนี้อยู่ในระบบแล้วมั้ย กันusernameซ้ำ
+                array_push($errors, "Username already exists");
+            }
+            if ($result['email'] === $email) { //มีemailนี้อยู่ในระบบแล้วมั้ย ไม่ให้ใช้mailเดิมสมัคร
+                array_push($errors, "Email already exists");
+            }
+        }
+
+        if (count($errors) == 0) { //if no error
+            $password = md5($pass_1);
+
+            $sql = "INSERT INTO user (username, email, password,role) VALUES ('$username', '$email', '$password','user')";
+            mysqli_query($conn,$sql);
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['role'] = $row['role'];
+            $_SESSION['username'] = $username;
+            $_SESSION['success'] = "You are now logged in";
+            header('location: index.php');
+        } else {
+            array_push($errors, "Username or Email already exists");
+            $_SESSION['error'] = "Username or Email already exists";
+            header('location: register.php');
+        }
+    }
+?>

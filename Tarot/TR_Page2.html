@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot</title>
+    <style>
+        @font-face {
+            font-family: thFont1;
+            src: url(../font/PK\ Maehongson\ Medium.ttf);
+        }
+
+        @font-face {
+            font-family: thFont2;
+            src: url(../font/SOV_Vimamsa.ttf);
+        }
+
+        body {
+            background: url(./compost/TR_BG2.gif) no-repeat center fixed;
+            background-size: cover;
+
+        }
+
+        h1,h2 {
+            color: rgb(0, 0, 0);
+            font-family: thFont1;
+            size: large;
+        }
+
+        .title {
+            margin: auto;
+        }
+
+        .imgCard {
+            width: 140px;
+            height: 225px;
+            border-radius: 7%;
+        }
+
+        .container {
+            height: 70%;
+            width: 80%;
+            text-align: center;
+            justify-content: center;
+            /*max-width: 1000px;*/
+            margin: 20 auto;
+            margin-right: 70%;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            position: relative;
+        }
+
+
+        /* รูปภาพเริ่มต้น */
+        .img-container {
+            float: left;
+            margin-left: 210%;
+            /*border-radius: 50%;*/
+        }
+
+        /* รูปภาพภาพที่ 2 ของแถว */
+        .img-container2 {
+            margin-left: 180%;
+            /*border-radius: 50%;*/
+        }
+
+        .img-container3 {
+            margin-left: 150%;
+            /*border-radius: 50%;*/
+        }
+
+        .img-container4 {
+
+            margin-left: 120%;
+            /*border-radius: 50%;*/
+        }
+
+        .img-container5 {
+            margin-left: 90%;
+
+        }
+
+        .img-container6 {
+            margin-left: 60%;
+            /*border-radius: 50%;*/
+        }
+
+        .img-container7 {
+
+            margin-left: 30%;
+            /*border-radius: 50%;*/
+        }
+
+        .img-container8 {
+            margin-left: 0%;
+        }
+
+        /* รูปภาพที่ลอยขึ้น */
+        .img-container.active {
+            transform: translateY(-20px);
+        }
+
+        .img-container:hover {
+            transform: translateY(-20px);
+        }
+
+        button{
+            background-image: linear-gradient( 109.6deg,  rgba(204,228,247,1) 11.2%, rgba(237,246,250,1) 100.2% );
+            width: 60%;
+            height: 50px;
+            font-family: thFont2;
+            font-weight: 300;
+            font-size: 20px;
+            border-radius: 30px;
+            margin: 0.5em 0.3em 0.5em;
+            padding: 0.65em 1.6em;
+            border: 1.5px solid linear-gradient( 109.6deg,  rgba(44,83,131,1) 18.9%, rgba(95,175,201,1) 91.1% );
+            display: inline-block;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.2s;
+            position: relative;
+            color: linear-gradient( 109.6deg,  rgba(44,83,131,1) 18.9%, rgba(95,175,201,1) 91.1% );
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        /* ปุ่มสุ่ม */
+        .btn1 {
+            animation: bn13bouncy 5s infinite linear;
+        }
+        
+
+        .btn1:hover,.btn2:hover {
+            background: #0e0e10;
+            border: 1.5px solid black;
+            color: #ffffff;
+        }
+
+
+        .btn1:hover span {
+        display: none
+        }
+
+        .btn1:hover:before {
+            content: "\1F0CF  Pick A Card  \1F0CE"
+        }
+
+        @keyframes bn13bouncy {
+            0% {
+                top: 0em;
+            }
+
+            40% {
+                top: 0em;
+            }
+
+            43% {
+                top: -0.9em;
+            }
+
+            46% {
+                top: 0em;
+            }
+
+            48% {
+                top: -0.4em;
+            }
+
+            50% {
+                top: 0em;
+            }
+
+            100% {
+                top: 0em;
+            }
+        }
+
+        #iconPic {
+            width: 250px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <center>
+            <img src="./compost/element/element3.png" alt="ICON" id="iconPic">
+            <h1>เลือกไพ่ 1 ใบ</h1>
+            <h2>&#10037; เพื่อทำนายดวงชะตาโดยรวมวันนี้ &#10037;</h2>
+            <img src="./compost/element/line1.png" alt="line" class"linePic" style="width: 60%;">
+        </center>
+    </div>
+
+    <center>
+        <div class="container" onclick="selectEmptyReset()">
+
+            <!-- รูปภาพ 1 -->
+            <div class="img-container">
+                <img src="CardBack.jpg" alt="Image 1" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 2 -->
+            <div class="img-container img-container2">
+                <img src="CardBack.jpg" alt="Image 2" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 3 -->
+            <div class="img-container img-container3">
+                <img src="CardBack.jpg" alt="Image 3" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 4 -->
+            <div class="img-container img-container4">
+                <img src="CardBack.jpg" alt="Image 4" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 5 -->
+            <div class="img-container img-container5">
+                <img src="CardBack.jpg" alt="Image 5" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 6 -->
+            <div class="img-container img-container6">
+                <img src="CardBack.jpg" alt="Image 6" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 7 -->
+            <div class="img-container img-container7">
+                <img src="CardBack.jpg" alt="Image 7" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 8 -->
+            <div class="img-container img-container8">
+                <img src="CardBack.jpg" alt="Image 8" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 9 -->
+            <div class="img-container img-container">
+                <img src="CardBack.jpg" alt="Image 9" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 10 -->
+            <div class="img-container img-container2">
+                <img src="CardBack.jpg" alt="Image 10" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 11 -->
+            <div class="img-container img-container3">
+                <img src="CardBack.jpg" alt="Image 11" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 12 -->
+            <div class="img-container img-container4">
+                <img src="CardBack.jpg" alt="Image 12" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 13 -->
+            <div class="img-container img-container5">
+                <img src="CardBack.jpg" alt="Image 13" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 14 -->
+            <div class="img-container img-container6">
+                <img src="CardBack.jpg" alt="Image 14" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 15 -->
+            <div class="img-container img-container7">
+                <img src="CardBack.jpg" alt="Image 15" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 16 -->
+            <div class="img-container img-container8">
+                <img src="CardBack.jpg" alt="Image 16" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 17 -->
+            <div class="img-container">
+                <img src="CardBack.jpg" alt="Image 17" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 18 -->
+            <div class="img-container img-container2">
+                <img src="CardBack.jpg" alt="Image 18" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 19 -->
+            <div class="img-container img-container3">
+                <img src="CardBack.jpg" alt="Image 19" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 20 -->
+            <div class="img-container img-container4">
+                <img src="CardBack.jpg" alt="Image 20" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 21 -->
+            <div class="img-container img-container5">
+                <img src="CardBack.jpg" alt="Image 21" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+            <!-- รูปภาพ 22 -->
+            <div class="img-container img-container6">
+                <img src="CardBack.jpg" alt="Image 22" class="imgCard" onclick="floatImage(this)">
+            </div>
+
+        </div>
+        <img src="./compost/element/line2.png" alt="line" class"linePic" style="width: 60%;">
+    </center>
+
+    <!-- ปุ่มสุ่มลิงค์ -->
+    <center>
+        <button onclick="doSomething()" class="btn1"><span>Pick A Card</span></button>
+        <button onclick="reset()" class="btn2">Reset</button>
+    </center>
+
+    <script>
+        function floatImage(img) {
+            // ให้ทุกรูปภาพกลับมาเริ่มต้น
+            var allImages = document.querySelectorAll(".img-container");
+            for (var i = 0; i < allImages.length; i++) {
+                allImages[i].classList.remove("active");
+            }
+
+            // ให้รูปภาพที่ถูกคลิกลอยขึ้น
+            img.parentElement.classList.add("active");
+        }
+
+
+
+        function doSomething() {
+            const selectedImg = document.querySelector(".active");
+            if (selectedImg) {
+                window.location.href = 'TR_ResultPage.php';
+            } else {
+                alert("Please pick one tarot!!");
+            }
+        }
+
+        function reset() {
+            // ให้ทุกรูปภาพกลับมาเริ่มต้น
+            var allImages = document.querySelectorAll(".img-container");
+            for (var i = 0; i < allImages.length; i++) {
+                allImages[i].classList.remove("active");
+            }
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

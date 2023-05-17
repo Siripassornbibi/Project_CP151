@@ -1,0 +1,129 @@
+#comment_persons{
+    background-color: rgb(231, 243, 246);
+    padding: 5px;
+    border-radius: 15px;
+    
+}
+
+.comment_person{
+    margin:6px;
+    width: 99%;
+    border-radius: 35px;
+}
+
+#commentShow{
+    color: black;
+}
+
+#inBox{
+    border-radius: 30px;
+    color: black;
+    padding: 5px;
+}
+
+#inBox:hover{
+    background-color: rgb(91, 124, 152);
+    color: white;
+}
+
+#comment_box{
+    background-color: white;
+    border-radius: 15px;
+    width: 99%;
+}
+
+#timeLabel{
+    text-align: right;
+}
+
+.profile_pic{
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+    margin-top: 5px;
+}
+
+.row{
+    margin: 5px;
+}
+
+.btnform{
+    color: rgb(0, 0, 0);
+    height: 40px; 
+    width: 80px;
+    margin-top: 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 2px solid royalblue;
+}
+
+.btnform:hover{
+    font-weight: bold;
+    background: linear-gradient(90deg, rgb(18, 31, 69) 0%, royalblue 75%, rgb(128, 157, 245) 100%);
+    color: white;
+    
+}
+.btnDropDown{
+    background-color: rgb(0, 0, 0);
+}
+@media (max-width: 700px) {
+    .profile_pic{
+        width: 90px;
+        height: auto;
+    }
+
+    .comment_person{
+        font-size: 12px;
+    }
+
+    .p1{
+        font-size: 12px;
+    }
+    
+}
+
+@media (max-width: 540px) {
+    .profile_pic{
+        width: 60px;
+    }
+
+    .comment_person{
+        font-size: 10px;
+    }    
+
+    #timeLabel{
+        text-align: left;
+    }
+}
+
+@media (max-width: 430px) {
+    .profile_pic{
+        width: 40px;
+    }
+    .comment_person{
+        font-size: 1px;
+    } 
+
+    #inBox{
+        border-radius: 10px;
+        color: black;
+        padding: 0.25px;
+        background-color: rgb(222, 227, 237);
+        opacity: 0.5;
+    }
+
+    #comment_persons{
+        padding: 1px;       
+    }
+}
+
+@media (max-width: 350px) {
+
+    .profile_pic{
+        width: 20px;
+    }
+
+    .comment_person{
+        font-size: 0.5px;
+    } 
+}

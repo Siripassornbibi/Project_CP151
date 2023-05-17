@@ -1,0 +1,29 @@
+.large-font{
+  font-size: 40px;
+  margin: 0px 10px;
+}
+.top-20{
+
+}
+
+ion-icon.active{
+  animation:like 0.5s 1;
+  fill:red;
+  stroke:none;
+}
+ion-icon{
+  fill:transparent;
+  stroke:black;
+  stroke-width:20;
+  transition:all 0.5s;
+}
+@-webkit-keyframes like {
+  0%   { transform: scale(1); }
+  90%   { transform: scale(1.2); }
+  100% { transform: scale(1.1); }
+}
+
+         
+
+
+
