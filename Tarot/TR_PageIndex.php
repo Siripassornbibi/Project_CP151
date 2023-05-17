@@ -98,7 +98,7 @@ $_SESSION['commentTable'] = 'commentTarot';
         <div class="container-fluid">
             <p class="pathTxt">
                 <a class="navbar-brand" href="../Login/index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
-                <a class="navbar-brand" href="../Login/menu.html" style="font-size:15px">MENU &nbsp ></a>
+                <a class="navbar-brand" href="../Login/menu.php" style="font-size:15px">MENU &nbsp ></a>
                 <u><a class="navbar-brand" href="./FS_PageIndex.php" style="text-decoration: underline; font-size:15px;">TAROT CARD</a></u>
             </p>
             <div class="d-flex justify-content-md-center logo" style="position: absolute;left:47%;z-index: 1;">

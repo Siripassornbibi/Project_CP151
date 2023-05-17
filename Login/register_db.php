@@ -8,6 +8,9 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $pass_1 = mysqli_real_escape_string($conn, $_POST['pass_1']);
         $pass_2 = mysqli_real_escape_string($conn, $_POST['pass_2']);
+        $image = $_FILES['image']['name'];
+        $image_tmp_name = $_FILES['image']['tmp_name'];
+        $image_folder = './uploaded_img/'.$image;
 
         if(empty($username)) {
             array_push($errors, "*Username is required");
@@ -41,13 +44,18 @@
         if (count($errors) == 0) { //if no error
             $password = md5($pass_1);
 
-            $sql = "INSERT INTO user (username, email, password,role) VALUES ('$username', '$email', '$password','user')";
+            $sql = "INSERT INTO user (username, email, password,role,image) VALUES ('$username', '$email', '$password','user','$image')";
             mysqli_query($conn,$sql);
+
+            move_uploaded_file($image_tmp_name, $image_folder);
+
             $_SESSION['id'] = $row['id'];
             $_SESSION['role'] = $row['role'];
             $_SESSION['username'] = $username;
+            $_SESSION['image'] = $image_folder;
+            $_SESSION['email'] = $email;
             $_SESSION['success'] = "You are now logged in";
-            header('location: index.php');
+            header('location: ../index.php');
         } else {
             array_push($errors, "Username or Email already exists");
             $_SESSION['error'] = "Username or Email already exists";

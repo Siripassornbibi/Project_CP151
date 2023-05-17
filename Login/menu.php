@@ -1,3 +1,7 @@
+<?php
+session_start();
+include('../ServerConnect/server.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,7 +116,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbarTop">
         <div class="container-fluid connav">
             <p class="pathTxt">
-                <a class="navbar-brand ms-5" href="index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
+                <a class="navbar-brand ms-5" href="../index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
                 <u><a class="navbar-brand" href="menu.html" style="font-size:15px">MENU</a></u>
             </p>
             <div class="d-flex justify-content-md-center" style="position: absolute;left:47%;z-index: 1;">
@@ -121,8 +125,18 @@
                 </a>
             </div>
             <div class="d-flex me-2">
-                <p class="mt-3">your point</p>
-                <i class="fa fa-user" aria-hidden="true"></i></p>
+                <?php if (isset($_SESSION['username'])) : ?>
+                    <p class="mt-3">Welcome <?php echo $_SESSION['username']; ?>&nbsp;</p>
+                    <?php if ($_SESSION['image'] === '') : ?>
+                        <div class="profile-image-container">
+                            <a href="./update_profile.php"><img src="./pic/default-image.png" height="50px" border-radius="50%"></a>
+                        </div>
+                    <?php else: ?>
+                        <div class="profile-image-container">
+                            <a href="./update_profile.php"><img src="uploaded_img/<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <p>&nbsp&nbsp&nbsp</p>
                 <p class="mt-2 me-2"><a href="index.php?logout='1'" class="btn btn-outline-danger">Logout</a></p>
             </div>
