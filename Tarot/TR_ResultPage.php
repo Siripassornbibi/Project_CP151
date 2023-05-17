@@ -16,6 +16,9 @@
     <!--ปุ่มเลื่อนขึ้นไปข้างบน-->
     <link rel="stylesheet" href="../css/scrollTop/scroll.css">
 
+    <!--footer-->
+    <link rel="stylesheet" href="../css/footer.css">
+
     <!--เชื่อมข้อมูล-->
     <script src="./TR_Data.js"></script>
     <script>
@@ -207,6 +210,13 @@
         </div>
     </div>
 
+    <div class="footer">
+        <center>
+            <p>Copyright©2023 Uuuuu Yang Company</p>
+            <p style="background-color: white; color:black; border-radius: 35px; width: 200px;">Version : 0.0.1</p>
+        </center>
+    </div>
+    
     <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
     <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
     <script src="../css/scrollTop/scroll.js"></script>
