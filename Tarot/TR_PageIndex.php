@@ -114,7 +114,7 @@ session_start();
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="../Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
+                            <a href="../Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%" style="border-radius: 50%;"></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>

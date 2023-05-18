@@ -43,8 +43,10 @@ if (isset($_GET['logout'])) {
 <body class="index">
     <nav class="navbar navbar-expand-lg fixed-top navbarTop">
         <div class="container-fluid">
-            <div class="d-flex justify-content-between flex-fill">
-                <a class="navbar-brand ms-5" href="index.php" style="font-size:15px; text-decoration: underline;color: white;">HOMEPAGE</a>
+      
+                <p class="pathTxt">
+                    <a class="navbar-brand" href="../index.php" style="font-size:15px; color:white; margin-left:5px"><b>HOMEPAGE</b></a>
+                </p>
                 <div class="d-flex justify-content-md-center" style="position: absolute;left:47%;top:0;z-index: 1;margin:0">
                     <a href="./index.php">
                         <img src="./pic/logo/logo2.png" alt="logo web" width="85">
@@ -74,26 +76,28 @@ if (isset($_GET['logout'])) {
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="./Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
+                            <a href="./Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" style="border-radius: 50%;""></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
                 <p>&nbsp&nbsp&nbsp</p>
                 <p class="mt-2 me-2"><a href="index.php?logout='1'" class="btn btn-outline-danger">Logout</a></p>
 
-                </div>
+         
             </div>
         </div>
     </nav>
 
     <div class="content">
         <div class="banner">
-            <div class="container-fluid p-5">
-                <p class="one">Free horoscope website</p>
-                <p class="two">Watch anywhere and anytime.</p>
-                <br>
-                <p class="three">Ready to watch? Click here</p>
-                <a class="btn btn-light btn-lg" href="./Login/menu.php">Free Horoscope</a>
+            <div class="container-fluid p-5" style="height:950px; width:100%;">
+                <div class="txt-group" style="margin-left:5%; margin-top:10%">
+                    <p class="one">Free horoscope website</p>
+                    <p class="two">Watch anywhere and anytime.</p>
+                    <br>
+                    <p class="three">Ready to watch? Click here</p>
+                    <a class="btn btn-light btn-lg" href="./Login/menu.php">Free Horoscope</a>
+                </div>
             </div>
         </div>
     </div>

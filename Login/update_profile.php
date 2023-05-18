@@ -64,7 +64,7 @@
                 </div>
             <?php else: ?>
                 <div class="profile-image-container">
-                    <img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px">
+                    <img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 50%; width: 200px; height: 200px;">
                 </div>
             <?php endif; ?>
             <div class="input-group">

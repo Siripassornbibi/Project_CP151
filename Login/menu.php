@@ -131,11 +131,11 @@ $_SESSION['path'] = $_SERVER['REQUEST_URI'];
                     <p class="mt-3">username: <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
                     <?php if ($_SESSION['image'] === '') : ?>
                         <div class="profile-image-container">
-                            <a href="./update_profile.php"><img src="./pic/default-image.png" height="50px" border-radius="50%"></a>
+                            <a href="./update_profile.php"><img src="./pic/default-image.png" height="50px" style="border-radius: 50%;""></a>
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="./update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%"></a>
+                            <a href="./update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" style="border-radius: 50%;"></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>

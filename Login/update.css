@@ -68,7 +68,7 @@ img.profile-image-container {
 }
 
 img.profile-image {
-    width: 50px;
+    width: 250px;
     object-fit: cover;
-    border-radius: 100%;
+    border-radius: 50%;
 }
