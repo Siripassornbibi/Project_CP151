@@ -101,7 +101,7 @@ session_start();
                 <u><a class="navbar-brand" href="./FS_PageIndex.php" style="text-decoration: underline; font-size:15px;">TAROT CARD</a></u>
             </p>
             <div class="d-flex justify-content-md-center logo" style="position: absolute;left:47%;z-index: 1;">
-                <a href="./index.php">
+                <a href="../index.php">
                     <img src="../pic/logo/logo2.png" alt="logo web" width="85">
                 </a>
             </div>
@@ -110,11 +110,11 @@ session_start();
                     <p class="mt-3">username: <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
                     <?php if ($_SESSION['image'] === '') : ?>
                         <div class="profile-image-container">
-                            <a href="../Login/update_profile.php"><img src="../Login/pic/default-image.png" height="50px" border-radius="50%"></a>
+                            <a href="../Login/update_profile.php"><img src="../Login/pic/default-image.png" style="border-radius: 100%; height:50px; width:50px;"></a>
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="../Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%" style="border-radius: 50%;"></a>
+                            <a href="../Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" border-radius="50%" style="border-radius: 100%; height:50px; width:50px;"></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>

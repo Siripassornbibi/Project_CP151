@@ -101,6 +101,17 @@
                 width:70%;
             }
         }
+        #navDown a:hover{
+            color:black;
+        }
+        .backBtn {
+            background-color: #5C469C;
+            color: white;
+        }
+
+        .backBtn:hover {
+            background-color: #D4ADFC !important;
+        }
     </style>
 
     <style>
@@ -122,7 +133,7 @@
         <div class="row">
             <div class="container-fluid navbarTop"> 
                 <div class="d-flex justify-content-md-center logo">
-                    <a href="../Login/index.php">
+                    <a href="../index.php">
                         <img src="../pic/logo/logo2.png" alt="logo web" width="85">
                     </a>
                 </div>
@@ -137,7 +148,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><b><?php echo $_SESSION['username']?></b> : You Got <b><span id=nameCardNav></span></b> Card</a>
+                    <a class="navbar-brand">
+                        <b><?php echo $_SESSION['username']?></b> : You Got <b><span id=nameCardNav></span></b> Card
+                    </a>
                 </div>
                 <div>
                     <div class="collapse navbar-collapse" id="myNavbar">
@@ -147,6 +160,7 @@
                         <li><a href="#section2" class="scroll-link">&#128184; Finance</a></li>
                         <li><a href="#section3" class="scroll-link">&#128152; Love</a></li>
                         <li><a href="#section4" class="scroll-link">&#129658; Health</a></li>
+                        <li><a href="./TR_PageIndex.php" class="scroll-link backBtn" style="color:white">BACK</a></li>
                     </ul>
                     </div>
                 </div>

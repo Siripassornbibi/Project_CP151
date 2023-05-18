@@ -72,11 +72,11 @@ if (isset($_GET['logout'])) {
                     <p class="mt-3">Welcome <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
                     <?php if ($_SESSION['image'] === '') : ?>
                         <div class="profile-image-container">
-                            <a href="./Login/update_profile.php"><img src="./Login/pic/default-image.png" height="50px" border-radius="50%"></a>
+                            <a href="./Login/update_profile.php"><img src="./Login/pic/default-image.png" style="border-radius: 100%; height:50px; width:50px;"></a>
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="./Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" height="50px" style="border-radius: 50%;""></a>
+                            <a href="./Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 100%; height:50px; width:50px;"></a>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>

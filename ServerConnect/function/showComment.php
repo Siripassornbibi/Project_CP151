@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) > 0) {
     "<div class='container-fluid' id='comment_person'>
         <div class='row' id='inBox'>
             <div class='col-3 text-center'>
-                <img src='../profile_testPic.png' class='profile_pic'>
+                <img src='data:image/jpg;charset=utf8;base64,".base64_encode($row['image'])."' class='profile_pic'/>
             </div>
             <div class='col'>
                 <div class='row p-2'>
