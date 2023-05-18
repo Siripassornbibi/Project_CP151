@@ -2,7 +2,14 @@
 <?php include('../server.php'); ?>
 
 <?php
-$sql = "SELECT * FROM " . $_SESSION['commentTable'] . " INNER JOIN user ON " . $_SESSION['commentTable'] . ".idUser = user.id;";
+// ตรวจสอบสถานะการเรียงลำดับ
+if (isset($_GET['sortOrder'])) {
+    $sortOrder = $_GET['sortOrder'];
+} else {
+    $sortOrder = 'asc'; // สถานะเริ่มต้นคือ ASC
+}
+
+$sql = "SELECT * FROM " . $_SESSION['commentTable'] . " INNER JOIN user ON " . $_SESSION['commentTable'] . ".idUser = user.id ORDER BY dateandtime $sortOrder;";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {

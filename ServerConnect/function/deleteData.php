@@ -6,7 +6,7 @@
     $idC = $_GET["IdComment"];
 
     // sql to delete a record
-    $sql = "DELETE FROM comment WHERE idComment=$idC";
+    $sql = "DELETE FROM ".$_SESSION['commentTable']." WHERE idComment=$idC";
 
     if (mysqli_query($conn, $sql)) {
         echo "Record deleted successfully";

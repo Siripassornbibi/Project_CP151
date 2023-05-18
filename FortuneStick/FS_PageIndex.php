@@ -34,6 +34,9 @@ $_SESSION['commentTable'] = 'comment';
     <!--navbar-->
     <link rel="stylesheet" href="../css/navbar.css">
 
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -192,15 +195,18 @@ $_SESSION['commentTable'] = 'comment';
                     <label for="floatingTextarea2">Comments</label>
                 </div>
 
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end m-2">
-                    <!-- Btn -->
-                    <input class="btnform btn" type="reset"></input>
-                    <input class="btnform btn" type="submit" value="Sent"></input>
-                    <!-- heart -->
-                    <div class='large-font top-20' data-bs-toggle="tooltip" data-bs-placement="top" title="Like This">
-                        <ion-icon name="heart">
-                            <div class='red-bg'></div>
-                        </ion-icon>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-between m-2">
+                    <div>
+                        <input type="button" class="btn btn-primary" value="&#8597; sort by date" onclick="sortComment()" id="sortBtn" style="background-color: #19A7CE;"></input>
+                    </div>
+                    <div>
+                        <input class="btnform btn" type="reset"></input>
+                        <input class="btnform btn" type="submit" value="Sent"></input>
+                        <div class='large-font top-20' data-bs-toggle="tooltip" data-bs-placement="top" title="Like This">
+                            <ion-icon name="heart">
+                                <div class='red-bg'></div>
+                            </ion-icon>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,18 +218,66 @@ $_SESSION['commentTable'] = 'comment';
         <div class="comment_persons overflow-scroll" id="comment_persons" style="max-height: 500px;">
 
             <?php 
-                if($_SESSION['role']=='admin'){
-                    include('../ServerConnect/function/showComment.php'); 
-                }else{
-                    include('../ServerConnect/function/showCommentUser.php'); 
-                }
+            if($_SESSION['role']=='admin'){
+                $_SESSION['pathComment']='../ServerConnect/function/showComment.php'; 
+            }else{
+                $_SESSION['pathComment']='../ServerConnect/function/showCommentUser.php'; 
+            }
             ?>
 
+            <div id="commentsContainer">
+                <!-- ส่วนนี้จะถูกอัปเดตด้วย AJAX เมื่อโหลดหน้าเว็บ -->
+            </div>
+    
         </div>
-
-        
-
     </div>
+
+    <!--แทรกคอมเม้นแบบใช้ Ajax-->
+    <script>
+        // สร้างตัวแปรเก็บสถานะการเรียงลำดับ
+        var sortOrder = 'asc'; // สถานะเริ่มต้นคือ ASC
+
+        function sortComment() {
+            // สลับระหว่าง ASC และ DESC
+            if (sortOrder === 'asc') {
+                sortOrder = 'desc';
+            } else {
+                sortOrder = 'asc';
+            }
+
+            $.ajax({
+                url: '<?php echo $_SESSION['pathComment']; ?>',
+                method: 'GET',
+                data: { sortBy: 'dateandtime', sortOrder: sortOrder }, // ส่งพารามิเตอร์สำหรับเรียงลำดับและสถานะ
+                success: function(response) {
+                    // Process the response here
+                    var commentsContainer = document.getElementById("commentsContainer");
+                    commentsContainer.innerHTML = response;
+                },
+                error: function(xhr, status, error) {
+                    // Handle error here
+                    console.error(error);
+                }
+            });
+        }
+
+        // เมื่อโหลดหน้าเว็บเรียกฟังก์ชันดึงข้อมูลเพื่อแสดงคอมเมนต์
+        $(document).ready(function() {
+            $.ajax({
+                url: '<?php echo $_SESSION['pathComment']; ?>',
+                method: 'GET',
+                success: function(response) {
+                    // Process the response here
+                    var commentsContainer = document.getElementById("commentsContainer");
+                    commentsContainer.innerHTML = response;
+                },
+                error: function(xhr, status, error) {
+                    // Handle error here
+                    console.error(error);
+                }
+            });
+        });
+    </script>
     
     
 
