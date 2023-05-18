@@ -212,8 +212,14 @@ session_start();
         <!--COMMENT Display-->
         <div class="comment_persons overflow-scroll" id="comment_persons" style="max-height: 500px;">
 
-            <?php include('../ServerConnect/function/showComment.php'); ?>
-
+            <?php 
+            if($_SESSION['role']=='admin'){
+                include('../ServerConnect/function/showComment.php'); 
+            }else{
+                include('../ServerConnect/function/showCommentUser.php'); 
+            }
+            ?>
+    
         </div>
 
         
