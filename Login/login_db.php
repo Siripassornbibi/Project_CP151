@@ -7,12 +7,12 @@
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-        if(empty($username)) {
-            array_push($errors, "*Username is required");
-        }
-        if(empty($password)) {
-            array_push($errors, "*Password is required");
-        }
+        // if(empty($username)) {
+        //     array_push($errors, "*Username is required");
+        // }
+        // if(empty($password)) {
+        //     array_push($errors, "*Password is required");
+        // }
         if (count($errors) == 0) { //if no error
             $password = md5($password);
             $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";

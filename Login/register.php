@@ -18,17 +18,18 @@
         <div class="register">
             <h2>Sign up</h2>
 
-            <?php include('errors.php') ?>
             <?php if(isset($_SESSION['error'])) : ?>
                 <div class="error">
                     <h4 style="color: #a94442; border: 1px solid #a94442; background: #f2dede; border-radius: 5px; text-align: center; padding: 10px; margin-bottom: 10px;">
-                        <?php
-                            echo $_SESSION['error'];
-                            unset($_SESSION['error']); //ขึ้นแค่รอบเดียว ถ้าrefreshหน้าข้อความก็จะหายไป
-                        ?>
-                    </h4>
-                </div>
-            <?php endif ?>
+            <?php
+            foreach ($_SESSION['error'] as $error) {
+                echo $error . "<br>";
+            }
+            unset($_SESSION['error']);
+            ?>
+        </h4>
+    </div>
+<?php endif ?>
         
             <div class="input-group">
                 <label for="username">Username</label>

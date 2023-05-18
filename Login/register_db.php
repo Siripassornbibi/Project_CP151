@@ -12,18 +12,18 @@
 		$fileType = pathinfo($fileName, PATHINFO_EXTENSION);
         $image = $_FILES['image']['tmp_name'];
 
-        if(empty($username)) {
-            array_push($errors, "*Username is required");
-        }
-        if(empty($email)) {
-            array_push($errors, "*Email is required");
-        }
-        if(empty($pass_1)) {
-            array_push($errors, "*Password is required");
-        }
-        if(empty($pass_2)) {
-            array_push($errors, "*Please confirm password");
-        }
+        // if(empty($username)) {
+        //     array_push($errors, "*Username is required");
+        // }
+        // if(empty($email)) {
+        //     array_push($errors, "*Email is required");
+        // }
+        // if(empty($pass_1)) {
+        //     array_push($errors, "*Password is required");
+        // }
+        // if(empty($pass_2)) {
+        //     array_push($errors, "*Please confirm password");
+        // }
         if($pass_1 != $pass_2) {
             array_push($errors, "The two password do not match");
         }
@@ -63,8 +63,7 @@
             
             header('location: ../Login/login.php');
         } else {
-            array_push($errors, "Username or Email already exists");
-            $_SESSION['error'] = "Username or Email already exists";
+            $_SESSION['error'] = $errors;
             header('location: register.php');
         }
     }
