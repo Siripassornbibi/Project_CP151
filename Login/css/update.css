@@ -1,6 +1,10 @@
+body{
+    background-color: F9F5EB;
+}
+
 div.update-profile{
     min-height: 100vh;
-    background-color: gray;
+    background: linear-gradient(to right, #bbd2c5, #536976);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,21 +13,24 @@ div.update-profile{
 
 form{
     padding: 20px;
-    background-color: white;
+    background-color: rgba(255,255,255,0.8);
     text-align: center;
     width: 700px;
-    border-radius: 5px
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 img{
-    height: 200px;
-    width: 200p;
+    height: 175px;
+    width: 175p;
     object-fit: cover;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 div.input-group {
     position: relative;
+    text-align: left;
+    margin-left: 23%;
 }
 
 span {
@@ -33,9 +40,8 @@ span {
 }
 
 input.box {
-    
     padding: 12px 14px;
-    font-size: 17px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
@@ -43,32 +49,62 @@ input.box {
 }
 
 input.update-button {
-    background-color: rgb(26, 146, 194);
+    background-color: #576CBC;
     color: white;
     border-radius: 5px;
     border: none;
     padding: 10px;
     margin-top: 5px;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+input.update-button:hover {
+    background-color: #1b3f83;
 }
 
 a.delete-button {
     text-decoration: none;
-    background-color: rgb(206, 38, 38);
+    background-color: #FF6969;
     color: white;
     border-radius: 5px;
     border: none;
     padding: 10px;
     margin-top: 5px;
+    font-size: 1em;
+    font-weight: 700;
 }
 
-img.profile-image-container {
+a.delete-button:hover{
+    background-color: #EA5455;
+}
+
+profile-image-container {
     width: 50px;
     height: 50px;
     overflow: hidden;
 }
 
 img.profile-image {
-    width: 50px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 100%;
+}
+
+.btnBar{
+    margin: 10px;
+}
+
+@media (max-width: 600px) {
+    img.profile-image{
+        width: 70px;
+    }
+    div.input-group {
+        margin-left: 5%;
+    }
+    #lastBox{
+        width: 240px;
+    }
+    
 }

@@ -43,7 +43,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upadte Profile</title>
-    <link rel="stylesheet" href="update.css">
+    <link rel="stylesheet" href="./css/update.css">
 </head>
 <body>
     <div class="update-profile">
@@ -60,11 +60,11 @@
         <form action="" method="post" enctype="multipart/form-data">
             <?php if ($_SESSION['image'] === '') : ?>
                 <div class="profile-image-container">
-                    <img src="./pic/default-image.png" height="50px">
+                    <img src="./pic/default-image.png">
                 </div>
             <?php else: ?>
                 <div class="profile-image-container">
-                    <img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 50%; width: 200px; height: 200px;">
+                    <img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 50%; width: 170px; height: 170px;">
                 </div>
             <?php endif; ?>
             <div class="input-group">
@@ -75,10 +75,12 @@
                 <input type="text" name="update_email" value="<?php echo $fetch['email']; ?>" class="box">
                 <br>
                 <span>Profile picture:</span>
-                <input type="file" name="update_image" class="box">
+                <input type="file" name="update_image" class="box" id="lastBox">
             </div>
-            <input type="submit" value="update profile" name="update_profile" class="update-button">
-            <a href="<?php echo $_SESSION['path']?>" class="delete-button">cancel</a>
+            <div class=btnBar>
+                <input type="submit" value="edit profile" name="update_profile" class="update-button">
+                <a href="<?php echo $_SESSION['path']?>" class="delete-button">cancel</a>
+            </div>
         </form>
     </div>
 </body>

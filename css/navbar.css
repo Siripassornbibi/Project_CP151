@@ -1,14 +1,20 @@
 .navbarTop:hover{
     background-color: rgb(203, 184, 216);
 }
+
 .connav{
     max-width: 100%;
 }
-.pathTxt{
-    font-size: 5px;
-}
+
 .logo{
     position: absolute;
     margin: auto;
     z-index: 1;
+}
+
+@media (max-width: 900px) {
+    .navbar-brand {
+        font-size: 10px;
+    }
+    
 }

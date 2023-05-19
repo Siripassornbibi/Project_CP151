@@ -91,6 +91,28 @@ $_SESSION['path'] = $_SERVER['REQUEST_URI'];
             background-color: white;
             opacity: 1;
         }
+
+        .picTop {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bgT {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            width: 30%;
+        }
+
+        .bg {
+            width: 100%;
+        }
+
         
         @media (max-width: 750px) {
             .link{
@@ -145,7 +167,8 @@ $_SESSION['path'] = $_SERVER['REQUEST_URI'];
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid picTop">
+        <img src="../pic/bigpic.png" class="bgT">
         <img src="./pic/bg1.jpg" class="bg">
     </div>
     <center>

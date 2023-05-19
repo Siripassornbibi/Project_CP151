@@ -60,7 +60,6 @@
             $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";
             $result = mysqli_query($conn, $query);
             
-            
             if(mysqli_num_rows($result) == 1) {
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['id'] = $row['id'];
@@ -78,7 +77,7 @@
 
             mysqli_close($conn);
             
-            header('location: ../Login/login.php');
+            header('location: ./login.php');
         } else {
             $_SESSION['error'] = $errors;
             header('location: register.php');
