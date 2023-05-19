@@ -119,7 +119,7 @@ $_SESSION['path'] = $_SERVER['REQUEST_URI'];
         <div class="container-fluid connav">
             <p class="pathTxt">
                 <a class="navbar-brand ms-5" href="../index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
-                <u><a class="navbar-brand" href="menu.html" style="font-size:15px">MENU</a></u>
+                <u><a class="navbar-brand" href="./menu.php" style="font-size:15px">MENU</a></u>
             </p>
             <div class="d-flex justify-content-md-center" style="position: absolute;left:47%;z-index: 1;">
                 <a href="../index.php">

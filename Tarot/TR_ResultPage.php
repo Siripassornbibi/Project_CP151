@@ -1,5 +1,7 @@
+<?php include('../ServerConnect/server.php'); ?>
 <?php
     session_start();
+    include('../ServerConnect/function/countReplay.php');
 ?>
 <!DOCTYPE html>
 <html>

@@ -51,15 +51,32 @@
                 $imgContent = addslashes(file_get_contents($image));
             }
 
+           
 
             $sql = "INSERT INTO user (username, email, password,role,image) VALUES ('$username', '$email', '$password','user','".$imgContent."')";
             mysqli_query($conn,$sql);
 
-            $_SESSION['id'] = $row['id'];
-            $_SESSION['role'] = $row['role'];
-            $_SESSION['username'] = $username;
-            $_SESSION['email'] = $email;
-            $_SESSION['success'] = "You are now logged in";
+            //update countParticipationTR table and countParticipationFS
+            $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";
+            $result = mysqli_query($conn, $query);
+            
+            
+            if(mysqli_num_rows($result) == 1) {
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['role'] = $row['role'];
+                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
+                $_SESSION['image'] = base64_encode($row['image']);
+                $_SESSION['success'] = "You are now logged in";
+                //countParticipationTR
+                $sql = "INSERT INTO countParticipationTR (id_user,view,replay,love) VALUES ('".$_SESSION['id']."',0,0,0)";
+                mysqli_query($conn,$sql);
+                $sql = "INSERT INTO countParticipationFS (id_user,view,replay,love) VALUES ('".$_SESSION['id']."',0,0,0)";
+                mysqli_query($conn,$sql);
+            }
+
+            mysqli_close($conn);
             
             header('location: ../Login/login.php');
         } else {

@@ -1,0 +1,19 @@
+.showParticipation {
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 10px 0 0 0;
+    }
+
+.showParticipation ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showParticipation li {
+    margin: 0 10px;
+    color:white
+}

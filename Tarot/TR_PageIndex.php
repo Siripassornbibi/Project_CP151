@@ -1,8 +1,20 @@
 <?php include('../ServerConnect/server.php'); ?>
 <?php 
-session_start(); 
+    session_start(); 
     $_SESSION['path'] = $_SERVER['REQUEST_URI']; 
     $_SESSION['commentTable'] = 'commentTarot'; 
+    $_SESSION['participationTable'] = 'countParticipationTR'; 
+
+    //อัปเดตวิว
+    include('../ServerConnect/function/countView.php');
+    //เอาไว้นับคอมเม้น
+    include('../ServerConnect/function/countComment.php');
+    //show total view/replay
+    include('../ServerConnect/function/showCountVP.php');
+
+    // ปิดการเชื่อมต่อ
+    $conn->close();
+    
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +24,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FortuneStick</title>
+    <title>Tarot</title>
     <!--bootstrap5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -32,6 +44,9 @@ session_start();
 
     <!--navbar-->
     <link rel="stylesheet" href="../css/navbar.css">
+
+    <!--participation_bar-->
+    <link rel="stylesheet" href="../css/showParticipation.css">
 
     <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -91,6 +106,7 @@ session_start();
             border: 1px solid rgb(68, 67, 67);
             opacity: 1;
         }
+        
     </style>
 
 </head>
@@ -125,11 +141,8 @@ session_start();
                 <p class="mt-2 me-2"><a href="../ServerConnect/logout.php" class="btn btn-outline-danger">Logout</a></p>
             </div>
         </div>
-       
     </nav>
-    
 
-    
 
     <!-- Carousel -->
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -159,6 +172,15 @@ session_start();
         </button>
     </div>
 
+    <div class="showParticipation">
+        <ul>
+            <li>&#128172 comment (<?php echo $_SESSION['countComment'];?>)</li>
+            <li>&#x1F496 love (<span id="heartCount"></span>)</li>
+            <li>&#128064 view (<?php echo $sumView;?>)</li>
+            <li>&#128257 play (<?php echo $sumReplay;?>)</li>
+        </ul>
+    </div>
+
     <div class="container-fluid" id="BtnBar">
         <center>
             <button class="BtnBarItem" type="button" onclick="myFunction1()">DETAIL</button>
@@ -182,7 +204,7 @@ session_start();
 
     <!--COMMENT UPDATE FORM-->
     <div id="commentCont" class="outBox">
-        <h2>COMMENT</h2>
+        <h2>COMMENT (<?php echo $_SESSION['countComment'];?>)</h2>
         <form action="../ServerConnect/function/insertComment.php" method='post'>
             <div class="comment_persons" id="input_comment">
                 <fieldset disabled>
@@ -202,11 +224,6 @@ session_start();
                     <div>
                         <input class="btnform btn" type="reset"></input>
                         <input class="btnform btn" type="submit" value="Sent"></input>
-                        <div class='large-font top-20' data-bs-toggle="tooltip" data-bs-placement="top" title="Like This">
-                            <ion-icon name="heart">
-                                <div class='red-bg'></div>
-                            </ion-icon>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -232,8 +249,26 @@ session_start();
         </div>
 
     </div>
+
+    <div class="footer">
+        <center>
+            <p>Copyright©2023 Uuuuu Yang Company</p>
+            <p style="background-color: white; color:black; border-radius: 35px; width: 200px;">Version : 0.0.1</p>
+        </center>
+    </div>
+
+    <!--ปุ่มหัวใจ-->
+    <div class='large-font position-fixed bottom-0 end-0' data-bs-toggle="tooltip" title="Like This" style="margin:0 36.5px 80px 0;">
+            <ion-icon name="heart">
+                <div class='red-bg'></div>
+            </ion-icon>
+    </div>
+
+    <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
+    <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
+    <script src="../css/scrollTop/scroll.js"></script>
     
-    <!--แทรกคอมเม้นแบบใช้ Ajax-->
+    <!--แทรกคอมเม้น+รายงานผลหัวใจที่ไม่ใช่กดปุ่มแบบใช้ Ajax-->
     <script>
         // สร้างตัวแปรเก็บสถานะการเรียงลำดับ
         var sortOrder = 'asc'; // สถานะเริ่มต้นคือ ASC
@@ -278,21 +313,42 @@ session_start();
                 }
             });
         });
+
+        //แสดงค่าหัวใจตอนแรก
+        let icon = document.querySelector('ion-icon');
+        $(document).ready(function() {
+            $.ajax({
+                url: '../ServerConnect/function/heartStatusPullFirst.php',
+                method: 'GET',
+                success: function(response) {
+                    var heartStatus =  parseInt(response);
+                    if (heartStatus === 1) {
+                        icon.classList.add('active');
+                    } else {
+                        icon.classList.remove('active');
+                    }  
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+        
+        //แสดงค่ารวมหัวใจตอนแรก
+        $(document).ready(function() {
+            $.ajax({
+                url: '../ServerConnect/function/gettotalHeartCount.php',
+                method: 'GET',
+                success: function(response) {
+                    var heartTotal = document.getElementById("heartCount");
+                    heartTotal.innerHTML = response;
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
     </script>
-
-    
-
-
-    <div class="footer">
-        <center>
-            <p>Copyright©2023 Uuuuu Yang Company</p>
-            <p style="background-color: white; color:black; border-radius: 35px; width: 200px;">Version : 0.0.1</p>
-        </center>
-    </div>
-
-    <!--ปุ่มเลื่อนขึ้นกลับไปช้างบน-->
-    <button onclick="topFunction()" id="BtnScollUp" title="Go to top">&#8679;</button>
-    <script src="../css/scrollTop/scroll.js"></script>
 
     <!-- carousel เลื่อนเอง -->
     <script>
@@ -324,13 +380,27 @@ session_start();
                 inline: "nearest"
             })
         }
+        
+        //อัพเดตค่าตอนกดปุ่มหัวใจ
+        icon.onclick = function() {
+            // สลับสีปุ่มหัวใจ
+            icon.classList.toggle('active');
+            // ส่งคำขอ Ajax
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    // อัปเดตค่าหัวใจและแสดงผล
+                    document.getElementById("heartCount").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "../ServerConnect/function/update_heart.php", true);
+            xhttp.send();
+        }
     </script>
 
     <!-- script heart -->
     <script src='https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js'></script>
-    <script src="../css/heartEffect/scriptHeart.js"></script>
-
-
+    
 
 </body>
 
