@@ -138,32 +138,42 @@ $_SESSION['path'] = $_SERVER['REQUEST_URI'];
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbarTop">
-        <div class="container-fluid connav">
-            <p class="pathTxt">
-                <a class="navbar-brand ms-5" href="../index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
-                <u><a class="navbar-brand" href="./menu.php" style="font-size:15px">MENU</a></u>
-            </p>
-            <div class="d-flex justify-content-md-center" style="position: absolute;left:47%;z-index: 1;">
-                <a href="../index.php">
-                    <img src="../pic/logo/logo2.png" alt="logo web" width="85">
-                </a>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.php">>HOMEPAGE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./menu.php">>MENU</a>
+                    </li>
+                </ul>
             </div>
-            <div class="d-flex me-2">
-                <?php if (isset($_SESSION['username'])) : ?>
-                    <p class="mt-3">username: <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
+            <a class="navbar-brand" href="../index.php" style="position: absolute; left: 50%; transform: translateX(-50%);">
+                <img src="../pic/logo/logo2.png" alt="logo web" width="85">
+            </a>
+            <?php if (isset($_SESSION['username'])) : ?>
+                <div class="d-flex me-2">
+                    <p class="mt-3 me-2">username: <b><?php echo $_SESSION['username']; ?></b></p>
                     <?php if ($_SESSION['image'] === '') : ?>
                         <div class="profile-image-container">
-                            <a href="./update_profile.php"><img src="./pic/default-image.png" height="50px" style="border-radius: 100%; height:50px; width:50px;"></a>
+                            <a href="../Login/update_profile.php">
+                                <img src="../Login/pic/default-image.png" style="border-radius: 100%; height:50px; width:50px;">
+                            </a>
                         </div>
                     <?php else: ?>
                         <div class="profile-image-container">
-                            <a href="./update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 100%; height:50px; width:50px;"></a>
+                            <a href="../Login/update_profile.php">
+                                <img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 100%; height:50px; width:50px;">
+                            </a>
                         </div>
                     <?php endif; ?>
-                <?php endif; ?>
-                <p>&nbsp&nbsp&nbsp</p>
-                <p class="mt-2 me-2"><a href="../index.php?logout='1'" class="btn btn-outline-danger">Logout</a></p>
-            </div>
+                    <p class="mt-2 me-2"><a href="../ServerConnect/logout.php" class="btn btn-outline-danger">Logout</a></p>
+                </div>
+            <?php endif; ?>
         </div>
     </nav>
 

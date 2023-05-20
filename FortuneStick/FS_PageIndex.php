@@ -111,36 +111,48 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
-    <nav class="navbar navbar-expand-lg fixed-top navbarTop">
-        <div class="container-fluid">
-            <p class="pathTxt">
-                <a class="navbar-brand" href="../index.php" style="font-size:15px">HOMEPAGE &nbsp ></a>
-                <a class="navbar-brand" href="../Login/menu.php" style="font-size:15px">MENU &nbsp ></a>
-                <u><a class="navbar-brand" href="./FS_PageIndex.php" style="text-decoration: underline; font-size:15px;">FORTUNE STICK</a></u>
-            </p>
-            <div class="d-flex justify-content-md-center logo" style="position: absolute;left:47%;z-index: 1;">
-                <a href="../index.php">
-                    <img src="../pic/logo/logo2.png" alt="logo web" width="85">
-                </a>
-            </div>
+<nav class="navbar navbar-expand-lg fixed-top navbarTop">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">>HOMEPAGE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Login/menu.php">>MENU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./FS_PageIndex.php">>FORTUNE STICK</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="../index.php" style="position: absolute; left: 50%; transform: translateX(-50%);">
+            <img src="../pic/logo/logo2.png" alt="logo web" width="85">
+        </a>
+        <?php if (isset($_SESSION['username'])) : ?>
             <div class="d-flex me-2">
-                <?php if (isset($_SESSION['username'])) : ?>
-                    <p class="mt-3">username: <b><?php echo $_SESSION['username']; ?></b>&nbsp;</p>
-                    <?php if ($_SESSION['image'] === '') : ?>
-                        <div class="profile-image-container">
-                            <a href="../Login/update_profile.php"><img src="../Login/pic/default-image.png" style="border-radius: 100%; height:50px; width:50px;"></a>
-                        </div>
-                    <?php else: ?>
-                        <div class="profile-image-container">
-                            <a href="../Login/update_profile.php"><img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 100%; height:50px; width:50px;"></a>
-                        </div>
-                    <?php endif; ?>
+                <p class="mt-3 me-2">username: <b><?php echo $_SESSION['username']; ?></b></p>
+                <?php if ($_SESSION['image'] === '') : ?>
+                    <div class="profile-image-container">
+                        <a href="../Login/update_profile.php">
+                            <img src="../Login/pic/default-image.png" style="border-radius: 100%; height:50px; width:50px;">
+                        </a>
+                    </div>
+                <?php else: ?>
+                    <div class="profile-image-container">
+                        <a href="../Login/update_profile.php">
+                            <img src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['image']; ?>" class="profile-image" style="border-radius: 100%; height:50px; width:50px;">
+                        </a>
+                    </div>
                 <?php endif; ?>
-                <p>&nbsp&nbsp&nbsp</p>
                 <p class="mt-2 me-2"><a href="../ServerConnect/logout.php" class="btn btn-outline-danger">Logout</a></p>
             </div>
-        </div>
-    </nav>
+        <?php endif; ?>
+    </div>
+</nav>
     
 
     <!-- Carousel -->
