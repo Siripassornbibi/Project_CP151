@@ -9,7 +9,7 @@ include('../ServerConnect/function/countReplay.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>x</title>
+    <title>FortuneStick Result</title>
     <script src="./FS_Data.js"></script>
     <script>
         let datas_BgColor = ["#088395","#77bfab","#a8dcff","#FFEFD6","#8294C4","#d1b8fc","#212f54","#71417a","#e06060","#3e5bc2","#ffe19c","#FFCCD2"];

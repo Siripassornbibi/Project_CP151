@@ -16,45 +16,62 @@ div.container-fluid.p-5{
     color: white;
 }
 
+@font-face {
+    font-family: thFont1;
+    src: url(../font/PK\ Maehongson\ Medium.ttf);
+}
+
+@font-face {
+    font-family: thFont2;
+    src: url(../font/SOV_Vimamsa.ttf);
+}
+
 p.one{
     font-size: 100px;
     margin: 0;
+    font-family: thFont2;
 }
 
 p.two{
     font-size: 50px;
+    font-family: thFont2;
 }
 
 p.three{
     font-size: 30px;
+    font-family: thFont1;
 }
 
 @media (max-width: 900px) {
     p.one{
-        font-size: 20px;
+        font-size: 70px;
         margin: 0;
     }
     
     p.two{
-        font-size: 40px;
+        font-size: 30px;
     }
     
     p.three{
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
 @media (max-width: 600px) {
     p.one{
-        font-size: 10px;
+        font-size: 50px;
         margin: 0;
     }
     
     p.two{
-        font-size: 50px;
+        font-size: 20px;
     }
     
     p.three{
-        font-size: 20px;
+        font-size: 15px;
+    }
+    .content{
+        padding-top: 25%;
     }
 }
+

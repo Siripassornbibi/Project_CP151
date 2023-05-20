@@ -55,6 +55,21 @@
         #navDown{
             background-color: #fff;
         }
+        @font-face {
+            font-family: thFont1;
+            src: url(../font/PK\ Maehongson\ Medium.ttf);
+        }
+
+        @font-face {
+            font-family: thFont2;
+            src: url(../font/SOV_Vimamsa.ttf);
+        }
+        h1{
+            font-family: thFont2;
+        }
+        p{
+            font-family: thFont1;
+        }
     </style>
 
     <style type="text/css">
@@ -209,7 +224,7 @@
             </div>
             <div class="col-sm-8">
                 <h1>LOVE</h1>
-                <p><div id="dataLove"></div></p>
+                <p><span id="dataLove"></span></p>
             </div>
         </div>
     </div>
@@ -218,7 +233,7 @@
         <div class="row">
             <div class="col-sm-8">
                 <h1>HEALTH</h1>
-                <p><div id="dataHealth"></div></p>
+                <p><span id="dataHealth"></span></p>
             </div>
             <div class="col-sm-4">
                 <img src="./compost/smallpic_in_result/health.jpg" class="smallpic_result">
