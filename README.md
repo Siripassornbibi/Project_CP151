@@ -1,12 +1,15 @@
-<img width="1440" alt="14" src="https://github.com/Siripassornbibi/Project_CP151/assets/62330969/29ade93d-a62f-40d7-90c5-c21f491bd6a2"># Project_CP151 |  Website For Horoscope
+# Project_CP151 |  Website For Horoscope
+
+The website is designed for accessing horoscopes across various devices. Users can comment and share their thoughts. 
+The scope includes:
+- Recording individual user activities (viewing, commenting, liking, interacting).
+- Storing user data such as usernames, emails, passwords, and profile pictures.
+- Providing a system for accessing and editing comments.
+- Offering two horoscope viewing options: Tarot and Fortune Stick.
+
+HTML,CSS,BootStrap,JavaScript,AJAX,jQuery,PHP,SQL,MySQL Database
+
 VIDEO 
-
-The website is designed for accessing horoscopes across various devices. Users can comment and share their thoughts. The scope includes:
-
-Recording individual user activities (viewing, commenting, liking, interacting).
-Storing user data such as usernames, emails, passwords, and profile pictures.
-Providing a system for accessing and editing comments.
-Offering two horoscope viewing options: Tarot and Fortune Stick.
 ------------------------------------------------------------------------------------------------------------------
 https://youtu.be/pRe1sOBKwJA?si=SpCUf-nZltMfaFb0
 
