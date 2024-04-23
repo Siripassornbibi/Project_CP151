@@ -7,7 +7,7 @@ The scope includes:
 - Providing a system for accessing and editing comments.
 - Offering two horoscope viewing options: Tarot and Fortune Stick.
 
-HTML,CSS,BootStrap,JavaScript,AJAX,jQuery,PHP,SQL,MySQL Database
+Website Development Tools:HTML,CSS,BootStrap,JavaScript,AJAX,jQuery,PHP,SQL,MySQL Database
 
 VIDEO 
 ------------------------------------------------------------------------------------------------------------------
